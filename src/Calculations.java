@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Calculations {
     private final short[][] table = new short[11][11];
 
@@ -13,6 +15,7 @@ public class Calculations {
             }
         }
         diplayTableInConsol(table);
+        displayTableInMessageBox(table);
     }
 
     void diplayTableInConsol(short[][] table) {
@@ -27,5 +30,8 @@ public class Calculations {
             System.out.println(" -------------------------------------------------------");
         }
     }
-
+    void displayTableInMessageBox(short[][] table){
+        JTable tab = new JTable(11, 11);
+        JOptionPane.showMessageDialog(null, new JScrollPane(tab));
+    }
 }
