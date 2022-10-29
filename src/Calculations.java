@@ -1,8 +1,5 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import java.util.Arrays;
-
+import javax.swing.table.DefaultTableCellRenderer;
 public class Calculations {
     private final short[][] table = new short[11][11];
 
@@ -35,8 +32,19 @@ public class Calculations {
         System.out.println(table.length);
     }
     void displayTableInMessageBox(short[][] table){
-        TableModel tableModel = new DefaultTableModel();
-        JTable tab = new JTable(table.length,table.length);
+        JTable tab= new JTable(11,11);
+        tab.setShowGrid(true);
+        tab.setAlignmentX(JTable.CENTER_ALIGNMENT);
+        tab.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                tab.setValueAt(table[i][j],i,j);
+
+            }
+        }
+
+
+
 
         JOptionPane.showMessageDialog(null, new JScrollPane(tab));
     }
