@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.util.Arrays;
 
 public class Calculations {
     private final short[][] table = new short[11][11];
@@ -29,9 +32,12 @@ public class Calculations {
             }
             System.out.println(" -------------------------------------------------------");
         }
+        System.out.println(table.length);
     }
     void displayTableInMessageBox(short[][] table){
-        JTable tab = new JTable(11, 11);
+        TableModel tableModel = new DefaultTableModel();
+        JTable tab = new JTable(table.length,table.length);
+
         JOptionPane.showMessageDialog(null, new JScrollPane(tab));
     }
 }
