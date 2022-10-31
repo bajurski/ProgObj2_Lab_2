@@ -1,17 +1,17 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
+import java.awt.*;
+
 public class Calculations {
     private final short[][] table = new short[11][11];
 
     void calcTable() {
-
         for (short i = 0; i < 11; i++) {
             for (short j = 0; j < 11; j++) {
                 short val = (short) (i * j);
                 if (i == 0) val = j;
                 if (j == 0) val = i;
                 table[i][j] = val;
-
             }
         }
         diplayTableInConsol(table);
@@ -29,23 +29,32 @@ public class Calculations {
             }
             System.out.println(" -------------------------------------------------------");
         }
-        System.out.println(table.length);
     }
     void displayTableInMessageBox(short[][] table){
         JTable tab= new JTable(11,11);
+
+        TableColumnModel columnModel = tab.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(15);
+        columnModel.getColumn(1).setPreferredWidth(15);
+        columnModel.getColumn(2).setPreferredWidth(15);
+        columnModel.getColumn(3).setPreferredWidth(15);
+        columnModel.getColumn(4).setPreferredWidth(15);
+        columnModel.getColumn(5).setPreferredWidth(15);
+        columnModel.getColumn(6).setPreferredWidth(15);
+        columnModel.getColumn(7).setPreferredWidth(15);
+        columnModel.getColumn(8).setPreferredWidth(15);
+        columnModel.getColumn(9).setPreferredWidth(15);
+        columnModel.getColumn(10).setPreferredWidth(15);
+
         tab.setShowGrid(true);
-        tab.setAlignmentX(JTable.CENTER_ALIGNMENT);
-        tab.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 tab.setValueAt(table[i][j],i,j);
-
             }
         }
-
-
-
-
-        JOptionPane.showMessageDialog(null, new JScrollPane(tab));
+        ScrollPane pane = new ScrollPane();
+        pane.add(tab);
+        pane.setPreferredSize(new Dimension(300,178));
+        JOptionPane.showMessageDialog(null, pane);
     }
 }
