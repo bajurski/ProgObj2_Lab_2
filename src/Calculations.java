@@ -49,7 +49,11 @@ public class Calculations {
         tab.setShowGrid(true);
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
-                tab.setValueAt(table[i][j],i,j);
+                if(i==0 && j==0){
+                    tab.setValueAt("",0,0);
+                } else {
+                    tab.setValueAt(table[i][j], i, j);
+                }
             }
         }
         ScrollPane pane = new ScrollPane();
